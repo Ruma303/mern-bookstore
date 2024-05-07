@@ -1,4 +1,4 @@
-import Book from "../models/Book.js";
+const Book = require("../models/Book.js");
 
 const getBooks = async (req, res) => {
     try {
@@ -34,9 +34,7 @@ const createBook = async (req, res) => {
             title: req.body.title,
             author: req.body.author,
             genre: req.body.genre,
-            publishYear: req.body.publishYear,
-            price: req.body.price,
-            available: req.body.available,
+            publicationYear: req.body.publicationYear,
         });
         res.status(201).json(newBook);
     } catch (err) {
@@ -47,18 +45,17 @@ const createBook = async (req, res) => {
 const updateBook = async (req, res) => {
     const { id } = req.params;
     try {
-        const updateBook = await Book.findByIdAndUpdate(id, {
+        const update = {
             title: req.body.title,
             author: req.body.author,
             genre: req.body.genre,
-            publishYear: req.body.publishYear,
-            price: req.body.price,
-            available: req.body.available,
-        }, { new: true });
-        if (!updateBook) {
-            res.status(404).json({ message: `Libro ${req.body.title} non trovato` });
+            publicationYear: req.body.publicationYear,
+        };
+        const updatedBook = await Book.findByIdAndUpdate(id, update, { new: true });
+        if (!updatedBook) {
+            return res.status(404).json({ message: `Libro ${req.body.title} non trovato` });
         }
-        res.status(201).json(updateBook);
+        res.status(200).json(updatedBook);
     } catch (err) {
         res.status(500).json({ message: err.message });
     }
@@ -78,4 +75,4 @@ const deleteBook = async (req, res) => {
 }
 
 
-export { getBooks, getBookById, createBook, updateBook, deleteBook };
+module.exports = { getBooks, getBookById, createBook, updateBook, deleteBook };
