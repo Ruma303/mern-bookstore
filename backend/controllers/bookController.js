@@ -3,9 +3,10 @@ const Book = require("../models/Book.js");
 const getBooks = async (req, res) => {
     try {
         const books = await Book.find();
-        res.json(books);
         if (books.length === 0) {
             res.status(404).json({ message: `Nessun libro trovato` });
+        } else {
+            res.json(books);
         }
     } catch (err) {
         res.status(500).json({ message: err.message });
@@ -13,10 +14,11 @@ const getBooks = async (req, res) => {
 }
 
 const getBookById = async (req, res) => {
+    const { id } = req.params;
     try {
-        const book = await Book.findById({_id: req.params.id});
+        const book = await Book.findById(id);
         if (!book) {
-            res.status(404).json({ message: `Libro non trovato` });
+            return res.status(404).json({ message: `Libro non trovato` });
         }
         res.json(book);
     } catch (err) {

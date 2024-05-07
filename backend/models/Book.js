@@ -13,11 +13,12 @@ const bookSchema = new Schema({
     },
     publicationYear: {
         type: Number,
-        default: null
+        default: null,
+        required: false
     },
     genre: {
         type: String,
-        required: true
+        required: false
     }
 }, { timestamps: true });
 

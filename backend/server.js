@@ -10,16 +10,8 @@ require('dotenv').config();
 const PORT = process.env.PORT || 3000;
 
 
-app.use(express.json());
-app.use((err, req, res, next) => {
-    console.log('Richiesta in arrivo:', req.method, req.path, req.body);
-    if (err && err instanceof SyntaxError && 'body' in err) {
-        console.error('Errore nella decodifica JSON:', err);
-        return res.status(400).send('JSON malformato');
-    }
-    next(err);
-});
 app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 //# Cors
 // Permette a tutte le origini
@@ -30,7 +22,6 @@ app.use(cors({
     origin: 'http://localhost:5173'
 }));
 
-
 app.get('/', (req, res) => {
     res.send('Backend Express.js attivo');
 });
@@ -39,11 +30,9 @@ app.use('/books', bookRoutes);
 
 //# Middleware per la gestione degli errori
 app.use((err, req, res, next) => {
-    if (res.headersSent) {
-        return next(err);
-    }
-    console.error("Errore intercettato:", err);
-    res.status(err.statusCode || 500).send(err.message || 'Errore interno');
+    console.error(err);
+    res.status(500).json({ message: 'Errore interno' });
+    next(err);
 });
 
 //% Avvio Server
