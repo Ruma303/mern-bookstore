@@ -1,8 +1,8 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 
-const Books = () => {
-    const [books, setBooks] = useState([]);
+const ShowBook = () => {
+    const [book, setBook] = useState([]);
 
     useEffect(() => {
         fetch('http://localhost:3000/books')
@@ -12,14 +12,10 @@ const Books = () => {
 
     return (
         <div>
-            <h2>Books</h2>
-            <ul>
-                {books.map(book => (
-                    <li key={book._id}>{book.title}</li>
-                ))}
-            </ul>
+            <h2>Book </h2>
+
         </div>
     )
 }
 
-export default Books
+export default ShowBook

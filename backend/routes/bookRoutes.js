@@ -10,9 +10,9 @@ import {
 
 router
     .get('/', getBooks)
-    .get('/:id', getBookById)
-    .post('/', createBook)
-    .put('/:id', updateBook)
-    .delete('/:id', deleteBook);
+    .get('/details/:id', getBookById)
+    .post('/create', createBook)
+    .put('/edit/:id', updateBook)
+    .delete('/delete/:id', deleteBook);
 
 export default router;

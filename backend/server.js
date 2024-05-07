@@ -2,8 +2,9 @@ import express from 'express';
 import mongooseConnect from './config/dbConnection.js';
 import bookRoutes from './routes/bookRoutes.js';
 import dotenv from 'dotenv';
-import cors from 'cors';
 const app = express();
+import cors from 'cors';
+
 
 //% Configurazione Server
 dotenv.config();
@@ -11,12 +12,12 @@ const PORT = process.env.PORT || 3000;
 
 //# Cors
 // Permette a tutte le origini
-app.use(cors());
+//app.use(cors());
 
 // Permette solo a specifiche origini
-/* app.use(cors({
-  origin: 'http://localhost:3000'
-})); */
+app.use(cors({
+    origin: 'http://localhost:5173'
+}));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
