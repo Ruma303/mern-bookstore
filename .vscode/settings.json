@@ -1,0 +1,35 @@
+{
+    "restoreTerminals.runOnStartup": true,
+    "restoreTerminals.terminals": [
+        {
+            "splitTerminals": [
+                {
+                    "shouldRunCommands": true,
+                    "restoreTerminals.artificialDelayMilliseconds": 1000,
+                    "name": "backend",
+                    "commands": [
+                        "cd backend",
+                        "npm run dev"
+                    ]
+                },
+                {
+                    "shouldRunCommands": true,
+                    "restoreTerminals.artificialDelayMilliseconds": 1000,
+                    "name": "frontend",
+                    "commands": [
+                        "cd frontend",
+                        "npm run dev"
+                    ]
+                },
+
+            ]
+        },
+        {
+            "splitTerminals": [
+                {
+                    "name": "Terminal",
+                }
+            ]
+        },
+    ]
+}
