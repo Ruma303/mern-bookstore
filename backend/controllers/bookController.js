@@ -3,12 +3,14 @@ import Book from "../models/Book.js";
 const getBooks = async (req, res) => {
     try {
         const books = await Book.find();
-        res.status(200).json(books);
-    } catch (error) {
-        res.status(500).json({ message: 'Errore nel recuperare i libri' });
+        res.json(books);
+        if (books.length === 0) {
+            res.status(404).json({ message: `Nessun libro trovato` });
+        }
+    } catch (err) {
+        res.status(500).json({ message: err.message });
     }
-};
-
+}
 
 const getBookById = async (req, res) => {
     try {
@@ -45,7 +47,7 @@ const createBook = async (req, res) => {
 const updateBook = async (req, res) => {
     const { id } = req.params;
     try {
-        const updateBook = await Book.findByIDAndUpdate(id, {
+        const updateBook = await Book.findByIdAndUpdate(id, {
             title: req.body.title,
             author: req.body.author,
             genre: req.body.genre,
@@ -54,7 +56,7 @@ const updateBook = async (req, res) => {
             available: req.body.available,
         }, { new: true });
         if (!updateBook) {
-            res.status(404).json({ message: `Libro ${title} non trovato` });
+            res.status(404).json({ message: `Libro ${req.body.title} non trovato` });
         }
         res.status(201).json(updateBook);
     } catch (err) {
@@ -65,11 +67,11 @@ const updateBook = async (req, res) => {
 const deleteBook = async (req, res) => {
     const { id } = req.params;
     try {
-        const updateBook = await Book.findByIDAndDelete(id);
-        if (!updateBook) {
-            res.status(404).json({ message: `Libro ${title} non trovato` });
+        const deleteBook = await Book.findByIdAndDelete(id);
+        if (!deleteBook) {
+            res.status(404).json({ message: `Libro non trovato` });
         }
-        res.status(201).json({ message: `Libro ${title} eliminato` });
+        res.status(201).json({ message: `Libro ${deleteBook.title} eliminato` });
     } catch (err) {
         res.status(500).json({ message: err.message });
     }
