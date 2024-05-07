@@ -10,16 +10,16 @@ const Books = () => {
             .then(data => setBooks(data));
     }, []);
 
-  return (
-    <div>
-        <h2>Books</h2>
-        <ul>
-            {books.map(book => (
-                <li key={book._id}>{book.title}</li>
-            ))}
-        </ul>
-    </div>
-  )
+    return (
+        <div>
+            <h2>Books</h2>
+            <ul>
+                {books.map(book => (
+                    <li key={book._id}>{book.title}</li>
+                ))}
+            </ul>
+        </div>
+    )
 }
 
 export default Books
