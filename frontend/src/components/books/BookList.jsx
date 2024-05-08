@@ -17,12 +17,9 @@ const BookList = () => {
                 {books.map(book => (
                     <li key={book._id} className="shadow-md px-4 py-3 rounded-lg text-left w-full">
                         <h3 className='text-xl font-semibold'>{book.title}</h3>
-                        <p className='text-md'><b>Author</b>: {book.author.firstName + book.author.lastName}</p>
-                        <p className='text-md'><b>Genres</b>: {book.genre.map(genre => {
-                            return genre + ' ';
-                        })}</p>
-                        <p className='text-md'><b>Price</b>: {book.price ?? 'null'}€</p>
-                        <p className='text-md'><b>Publication Year</b>: {book.year}</p>
+                        <p className='text-md'><b>Author</b>: {book.author}</p>
+                        <p className='text-md'><b>Genres</b>: {book.genre}</p>
+                        <p className='text-md'><b>Publication Year</b>: {book.publicationYear}</p>
                     </li>
                 ))}
             </ul>

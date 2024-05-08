@@ -5,8 +5,8 @@ const CreateBook = () => {
     const [book, setBook] = useState({
         title: '',
         author: '',
+        publicationYear: '',
         genre: '',
-        publicationYear: ''
     });
 
     const handleSubmit = (event) => {
