@@ -1,25 +1,21 @@
-const express = require('express'), app = express();
-const database = require('./config/database');
+const express = require('express');
+const app = express();
+const mongooseConnect = require('./config/dbConnection');
 
-//% Configurazione server
 require('dotenv').config();
-const LOCAL_PORT = process.env.LOCAL_PORT || 3000;
+const PORT = process.env.PORT || 3000;
 
+app.get('/', (req, res) => {
+    res.json('Hello World!');
+});
 
-//% Middleware
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-
-
-
-//% Avvio Server
-(async () => {
+(async function run() {
     try {
-        await database();
-        app.listen(LOCAL_PORT, () => {
-            console.log(`Server listening on port ${LOCAL_PORT}`);
+        await mongooseConnect();
+        app.listen(PORT, () => {
+            console.log(`Server is running on port ${PORT}`);
         });
     } catch (error) {
-        console.error(`Error starting server: ${error}`);
+        console.error('Error starting server:', error.message);
     }
 })()

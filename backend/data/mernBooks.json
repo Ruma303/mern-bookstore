@@ -1,0 +1,62 @@
+[
+    {
+        "title": "To Kill a Mockingbird",
+        "author": "Harper Lee",
+        "publicationYear": 1960,
+        "genre": "Southern Gothic"
+    },
+    {
+        "title": "1984",
+        "author": "George Orwell",
+        "publicationYear": 1949,
+        "genre": "Dystopian"
+    },
+    {
+        "title": "Pride and Prejudice",
+        "author": "Jane Austen",
+        "publicationYear": 1813,
+        "genre": "Romance"
+    },
+    {
+        "title": "The Great Gatsby",
+        "author": "F. Scott Fitzgerald",
+        "publicationYear": 1925,
+        "genre": "Tragedy"
+    },
+    {
+        "title": "The Hobbit",
+        "author": "J.R.R. Tolkien",
+        "publicationYear": 1937,
+        "genre": "Fantasy"
+    },
+    {
+        "title": "Moby Dick",
+        "author": "Herman Melville",
+        "publicationYear": 1851,
+        "genre": "Adventure Fiction"
+    },
+    {
+        "title": "War and Peace",
+        "author": "Leo Tolstoy",
+        "publicationYear": 1869,
+        "genre": "Historical Fiction"
+    },
+    {
+        "title": "The Catcher in the Rye",
+        "author": "J.D. Salinger",
+        "publicationYear": 1951,
+        "genre": "Literary Realism"
+    },
+    {
+        "title": "Brave New World",
+        "author": "Aldous Huxley",
+        "publicationYear": 1932,
+        "genre": "Dystopian"
+    },
+    {
+        "title": "The Lord of the Rings",
+        "author": "J.R.R. Tolkien",
+        "publicationYear": 1954,
+        "genre": "High Fantasy"
+    }
+]
