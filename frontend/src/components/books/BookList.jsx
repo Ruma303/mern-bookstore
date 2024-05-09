@@ -9,7 +9,7 @@ const BookList = () => {
         fetch('http://localhost:3000/books')
             .then(response => response.json())
             .then(data => setBooks(data));
-    }, []);
+    }, [books]);
 
     return (
         <div className='max-w-full h-full'>

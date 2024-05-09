@@ -1,13 +1,15 @@
 import React from 'react';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const CreateBook = () => {
+    const navigate = useNavigate();
     const [book, setBook] = useState({
         title: '',
         author: '',
         publicationYear: '',
         genre: '',
-    });
+   } );
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -20,7 +22,7 @@ const CreateBook = () => {
             body: JSON.stringify(book)
         })
         .then(response => response.json())
-        .then(data => console.log(data))
+        .then(data => console.log(data), navigate(`/books/`))
         .catch(error => console.error('Error:', error));
     };
 
