@@ -13,9 +13,9 @@ const BookList = () => {
     return (
         <div className='max-w-full h-full'>
             <h1 className='text-3xl font-semibold'>Book List</h1>
-            <ul className='flex flex-col gap-4'>
+            <ul className='grid grid-cols-3 gap-4'>
                 {books.map(book => (
-                    <li key={book._id} className="shadow-md px-4 py-3 rounded-lg text-left w-full">
+                    <li key={book._id} className="shadow-md px-4 py-3 rounded-lg text-left">
                         <h3 className='text-xl font-semibold'>{book.title}</h3>
                         <p className='text-md'><b>Author</b>: {book.author}</p>
                         <p className='text-md'><b>Genres</b>: {book.genre}</p>
