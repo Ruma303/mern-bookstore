@@ -1,6 +1,5 @@
 const Book = require('../model/book');
 
-
 const getAllBooks = async (req, res) => {
     try {
         const books = await Book.find();
@@ -27,7 +26,6 @@ const createBook = async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 }
-
 
 const getBookById = async (req, res) => {
     try {

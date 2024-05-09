@@ -8,8 +8,13 @@ require('dotenv').config();
 const PORT = process.env.PORT || 3000;
 app.use(express.json());
 
+// Permette tutte le origini
+// app.use(cors());
+
+// Permette solo l'origine / le origini specificata/e
+const trustedCors = require('./config/trustedCors');
 app.use(cors({
-    origin: 'http://localhost:5173'
+    origin: trustedCors
 }));
 
 app.get('/', (req, res) => {
