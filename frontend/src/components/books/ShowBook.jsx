@@ -5,7 +5,6 @@ import { useParams, Link } from 'react-router-dom';
 const ShowBook = () => {
     const { id } = useParams();
     const [book, setBook] = useState([]);
-
     useEffect(() => {
         fetch('http://localhost:3000/books/' + id)
             .then(response => response.json())
@@ -21,11 +20,13 @@ const ShowBook = () => {
                 <p className='text-md'><b>Publication Year</b>: {book.publicationYear}</p>
             </div>
             <div className='flex gap-2'>
-                <Link to={`/books/edit/${book._id}`} state={{ book }} className="bg-amber-400 px-4 py-2 rounded-lg">Update</Link>
-                <Link to={`/books/delete/${book._id}`} state={{ book }} className="bg-red-500 px-4 py-2 rounded-lg">Delete</Link>
+                <Link to={`/books/edit/${book._id}`} state={{ book }}
+                    className="bg-amber-400 px-4 py-2 rounded-lg">Update</Link>
+                <Link to={`/books/delete/${book._id}`} state={{ book }}
+                    className="bg-red-500 px-4 py-2 rounded-lg">Delete</Link>
             </div>
         </div>
     )
 }
 
-export default ShowBook
+export default ShowBook;
