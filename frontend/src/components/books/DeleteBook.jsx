@@ -8,10 +8,13 @@ const DeleteBook = () => {
     const book = location.state.book;
 
     console.log(book)
+
     useEffect(() => {
+
         const timerId = setInterval(() => {
             setSeconds(prevSeconds => prevSeconds - 1);
         }, 1000);
+
         const deleteTimeout = setTimeout(() => {
             fetch('http://localhost:3000/books/' + book._id, {
                 method: 'DELETE',
@@ -24,12 +27,14 @@ const DeleteBook = () => {
                     console.error('Error:', error);
                 });
         }, 5000);
+
         return () => {
             clearInterval(timerId);
             clearTimeout(deleteTimeout);
         };
+
     }, [book._id, navigate]);
-    
+
     const handleAbort = () => {
         navigate(-1);
     };

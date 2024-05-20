@@ -5,6 +5,7 @@ import { useParams, Link } from 'react-router-dom';
 const ShowBook = () => {
     const { id } = useParams();
     const [book, setBook] = useState([]);
+
     useEffect(() => {
         fetch('http://localhost:3000/books/' + id)
             .then(response => response.json())

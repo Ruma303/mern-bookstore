@@ -1,6 +1,4 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
-
 
 const Home = () => {
   return (
@@ -11,7 +9,6 @@ const Home = () => {
         <article className='text-lg'>
             Questa è la nostra libreria online, dove puoi trovare i libri più recenti e popolari. Imparerai nel frattempo come creare, leggere, aggiornare e cancellare i libri, grazie allo stack <strong>MERN</strong>. Inizia a navigare i libri per scoprire di più.
         </article>
-
     </>
   )
 }
